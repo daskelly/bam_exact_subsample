@@ -7,10 +7,10 @@ import sys, argparse, pysam, random
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("bamfile", metavar="file.bam")
-    parser.add_argument("outfile", metavar="out.bam")
+    parser.add_argument("bamfile", metavar="infile.bam")
+    parser.add_argument("outfile", metavar="outfile.bam")
     parser.add_argument("N", metavar="n_reads", type=int)
-    parser.add_argument('--seed', help="Seed for random read selection", default=1)
+    parser.add_argument('--seed', help="Seed for random read selection", default=1, metavar="N")
     args = parser.parse_args()
     random.seed(args.seed)
     

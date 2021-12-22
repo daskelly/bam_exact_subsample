@@ -25,5 +25,7 @@ optional arguments:
 Sample usage of this script. Subsample a random 10 reads from a very small
 BAM (only 26 reads):
 ```
-$ singularity run pysam_0.17.0--py36h61e5637_0.sif python bam_exact_subsample.py supermini.bam supermini_10.bam 10
+$ singularity run pysam_0.17.0--py36h61e5637_0.sif \
+    python bam_exact_subsample.py \
+    supermini.bam supermini_10.bam 10
 ```

@@ -4,7 +4,7 @@
 Given a 10X Genomics BAM file, split by cell barcodes into
 separate BAMs.
 """
-import sys, argparse, pysam, gzip
+import sys, argparse, pysam, gzip, os
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,12 +13,14 @@ def main():
     parser.add_argument("outdir", metavar="/path/to/outdir")
     args = parser.parse_args()
     assert args.barcodes.endswith('.gz')
+    assert os.path.exists(args.outdir) and os.path.isdir(args.outdir)
     
     # Read through barcodes file to capture CBs that we'll be considering
     bc = set()
     f = gzip.open(args.barcodes)
     for line in f:
-    	bc.add(line.rstrip())
+        this_barcode = line.rstrip().decode("utf-8")
+    	bc.add(this_barcode)
     f.close()
 
     # Open handles to CB-specific BAM files

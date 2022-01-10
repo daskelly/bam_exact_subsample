@@ -1,11 +1,23 @@
-# Subsampling an exact number of reads from a BAM file at random
+# Utilities or sampling from BAM files
 
-A small utility for randomly sampling an exact number of reads from a BAM file.
+This repository contains several utilities useful for sampling from BAM files,
+with a main focus on 10X CellRanger BAMs.
 
-In order to run this script we need a container that has python and the `pysam` package:
+In order to run these scripts we need a container that has python and the `pysam` package:
 ```
 $ singularity pull docker://quay.io/biocontainers/pysam:0.17.0--py36h61e5637_0
 ```
+
+## `10x_bam_split_CB.py`
+
+This is a small utility for dividing a 10X CellRanger BAM into thousands of
+"mini" BAMs, one for each cell barcode.
+
+
+
+## `bam_exact_subsample.py`
+
+This is a small utility for randomly sampling an exact number of reads from a BAM file.
 
 Usage instructions for this script:
 ```

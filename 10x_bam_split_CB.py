@@ -37,7 +37,7 @@ def main():
             cb = aln.get_tag('CB')
         except KeyError:
             failed += 1
-            next
+            continue
         cb_bams[cb].write(aln)
 
     # Close everything up nice and tidy

@@ -11,6 +11,7 @@ def main():
     parser.add_argument("bamfile", metavar="infile.bam")
     parser.add_argument("barcodes", metavar="barcodes.tsv.gz")
     parser.add_argument("outdir", metavar="/path/to/outdir")
+    parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
     assert args.barcodes.endswith('.gz')
     assert os.path.exists(args.outdir) and os.path.isdir(args.outdir)
@@ -33,7 +34,7 @@ def main():
     # Read through args.bamfile and write each read to the proper CB-specific BAM
     failed = 0
     for i, aln in enumerate(sfile):
-        if i % 10000000 == 0:
+        if i % 10000000 == 0 and args.verbose:
             print("On read {}".format(i))
         try:
             cb = aln.get_tag('CB')
@@ -47,7 +48,7 @@ def main():
     for key in cb_bams:
         cb_bams[key].close()
     #
-    print("Found {} alignments that \"failed\" due to having no CB available".format(failed))
+    print("Found {} alignments that \"failed\" due to having no valid filtered CB available".format(failed))
 
 if __name__ == "__main__":
     sys.exit(main())

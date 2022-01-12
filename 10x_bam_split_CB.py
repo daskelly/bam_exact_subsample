@@ -37,10 +37,10 @@ def main():
             print("On read {}".format(i))
         try:
             cb = aln.get_tag('CB')
+            cb_bams[cb].write(aln)
         except KeyError:
             failed += 1
             continue
-        cb_bams[cb].write(aln)
     #
     # Close everything up nice and tidy
     sfile.close()

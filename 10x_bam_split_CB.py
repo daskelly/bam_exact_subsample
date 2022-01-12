@@ -32,7 +32,9 @@ def main():
 
     # Read through args.bamfile and write each read to the proper CB-specific BAM
     failed = 0
-    for aln in sfile:
+    for i, aln in enumerate(sfile):
+    	if i % 10000000 == 0:
+    		print("On read {}".format(i))
         try:
             cb = aln.get_tag('CB')
         except KeyError:

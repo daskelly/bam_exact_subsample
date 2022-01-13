@@ -13,6 +13,21 @@ $ singularity pull docker://quay.io/biocontainers/pysam:0.17.0--py36h61e5637_0
 This is a small utility for dividing a 10X CellRanger BAM into thousands of
 "mini" BAMs, one for each cell barcode.
 
+Usage instructions for this script:
+```
+$ singularity run pysam_0.17.0--py36h61e5637_0.sif python 10x_bam_split_CB.py -h
+usage: 10x_bam_split_CB.py [-h] [--verbose]
+                           infile.bam barcodes.tsv.gz /path/to/outdir
+
+positional arguments:
+  infile.bam
+  barcodes.tsv.gz
+  /path/to/outdir
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --verbose
+```
 
 
 ## `bam_exact_subsample.py`
